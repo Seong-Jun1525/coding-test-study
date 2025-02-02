@@ -1,12 +1,42 @@
 // 피자 나눠 먹기(2) 미해결
-function solution(n) {
-    var answer = 0;
+/**
+ * 문제 설명
+ * 머쓱이네 피자가게는 피자를 여섯 조각으로 잘라 줍니다.
+ * 
+ * 피자를 나눠먹을 사람의 수 n이 매개변수로 주어질 때,
+ * 
+ * n명이 주문한 피자를 남기지 않고 모두 같은 수의 피자 조각을 먹어야 한다면
+ * 
+ * 최소 몇 판을 시켜야 하는지를 return 하도록 solution 함수를 완성해보세요.
+ */
 
-    console.log(n % 6);
+function solution(n) {
+    let i = 6;
     
-    answer = n % 6 === 0 ? n / 6 : Math.floor(n / 6) + 6 % n;
+    while(true) {
+        if(i % n == 0 && i % 6 == 0) {
+            break;
+        }
+        i++;
+    }
     
-    return answer;
+    return i / 6;
 }
 
+// 최소공배수를 활용하여 문제를 해결!
+
+/**
+ * 한 판당 조각 수(6조각)
+ * => 피자 판을 여러 개 시켜도 총 조각 수는 6의 배수
+ * 
+ * n명이 조각을 똑같이 나눠먹어야 함
+ * => 즉, 총 조각 수가 n의 배수
+ * 
+ * 최소한의 피자 판을 주문해야 함
+ * 그러면 6과 n이 공통으로 나눠질 수 있는 최소한의 조각 수를 찾아야함
+ * => 6과 n의 최소공배수(LCM)
+ */
+
+console.log(solution(6));
+console.log(solution(10));
 console.log(solution(4));
