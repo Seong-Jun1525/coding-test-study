@@ -8,8 +8,17 @@
 
 function solution(num, total) {
     var answer = [];
+    // total = n * (s + l) / 2
+    let t = (total * 2 / num - num + 1) / 2; 
+
+    for(let i = 0; i < num; i++) {
+        answer.push(t + i);
+    }
+
     return answer;
 }
+
+// 등차수열 => f(n)=a+(n-1)d
 
 console.log(solution(3, 12));
 console.log(solution(5, 15));
